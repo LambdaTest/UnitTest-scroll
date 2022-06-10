@@ -9,32 +9,32 @@ access_key = os.environ.get("LT_ACCESS_KEY")
 
 class FirstSampleTest(unittest.TestCase):
 
-    # setUp runs before each test case
-    def setUp(self):
-        desired_caps = {
-            'LT:Options': {
-                "user": username,
-                "accessKey": access_key,
-                "build": "UnitTest-Selenium-Sample",
-                "name": "UnitTest-Selenium-Test",
-                "platformName": "Windows 11",
-                "selenium_version": "4.0.0"
-            },
-            "browserName": "Chrome",
-            "browserVersion": "latest",
-        }
+	# setUp runs before each test case
+	def setUp(self):
+		desired_caps = {
+			'LT:Options': {
+				"user": username,
+				"accessKey": access_key,
+				"build": "UnitTest-Selenium-Sample",
+				"name": "UnitTest-Selenium-Test",
+				"platformName": "Windows 11",
+				"selenium_version": "4.0.0"
+			},
+			"browserName": "Chrome",
+			"browserVersion": "latest",
+		}
 
-        self.driver = webdriver.Remote(
-            command_executor="http://hub.lambdatest.com:80/wd/hub",
-            desired_capabilities=desired_caps)
+		self.driver = webdriver.Remote(
+			command_executor="http://hub.lambdatest.com:80/wd/hub",
+			desired_capabilities=desired_caps)
 
 
 # tearDown runs after each test case
 
-    def tearDown(self):
-        self.driver.quit()
-      
-    def scroll_bottom():
+	def tearDown(self):
+		self.driver.quit()
+
+	def scroll_bottom():
 		"""
 		Verify scrolling to bottom
 		:return: None
@@ -44,6 +44,7 @@ class FirstSampleTest(unittest.TestCase):
 		sleep(2)
 		success = driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 		sleep(5)
+		assert success == True
 	
 	def scroll_infinite():
 		"""
@@ -73,5 +74,7 @@ class FirstSampleTest(unittest.TestCase):
 			last_height = new_height
 			scroll_pass+=1
 	
+
+
 if __name__ == "__main__":
-    unittest.main()
+	unittest.main()
