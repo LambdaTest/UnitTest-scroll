@@ -43,7 +43,7 @@ while scroll_pass < 10:
 ## Run your test
 
 ```bash
-python lambdatest_test.py
+python scroll.py
 ```
 
 # Links:
